@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:akka="clr-namespace:MobileCrawler.CSharp;assembly=MobileCrawler.CSharp"
+    x:Class="MobileCrawler.CSharp.MainPage">
+    <ContentPage.Content>
+        <StackLayout Padding="15, 30, 15, 15" Spacing="10">
+            <StackLayout>
+                <Entry x:Name="Query" Text="{Binding Url}" 
+                       HorizontalOptions="FillAndExpand" Keyboard="Url"
+                       Placeholder="Enter a URL" HeightRequest="40" FontSize="20">
+                    <Entry.Behaviors>
+                        <akka:EntryCompletedBehavior Command="{Binding StartCrawlingCommand}" />
+                    </Entry.Behaviors>
+                </Entry>
+            </StackLayout>
+
+            <ListView ItemsSource="{Binding Results}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Title}" Detail="{Binding Url}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                <ListView.Header>
+                    <StackLayout Orientation="Horizontal" Padding="10" Spacing="10">
+                        <Label Text="{Binding Results.Count}" />
+                        <Label Text="links crawled" />
+                    </StackLayout>
+                </ListView.Header>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
