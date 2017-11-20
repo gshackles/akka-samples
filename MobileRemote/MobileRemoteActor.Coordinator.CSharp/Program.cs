@@ -2,6 +2,7 @@
 using Akka.Actor;
 using Akka.Configuration;
 using Akka.Routing;
+using MobileRemoteActor.Shared.CSharp;
 
 namespace MobileRemoteActor.Coordinator.CSharp
 {
@@ -27,12 +28,12 @@ namespace MobileRemoteActor.Coordinator.CSharp
                     }
 
                     cluster {
-                        seed-nodes = [""akka.tcp://lighthouse@127.0.0.1:4053""]
+                        seed-nodes = [""akka.tcp://mobilecompute@127.0.0.1:4053""]
                         roles = [coordinator]
                     }
                 }")))
             {
-                var hashers = system.ActorOf(Props.Empty.WithRouter(FromConfig.Instance), "hashers");
+                var hashers = system.ActorOf(Props.Create<HasherActor>().WithRouter(FromConfig.Instance), "hashers");
                 var coordinator = system.ActorOf(Props.Create(() => new CoordinatorActor(hashers)), "coordinator");
 
                 Console.ReadKey();

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="2.5.0.91635" />
+    <PackageReference Include="Akka.Cluster" Version="1.3.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MobileRemoteActor.Shared.CSharp\MobileRemoteActor.Shared.CSharp.csproj" />
+  </ItemGroup>
+</Project>

@@ -9,8 +9,13 @@
 
     public class HashResult
     {
-        public string Result { get; }
+        public string Hash { get; }
+        public string Salt { get; }
 
-        public HashResult(string result) => Result = result;
+        public HashResult(string hash, string salt) 
+        {
+            Hash = hash;
+            Salt = salt;
+        }
     }
 }

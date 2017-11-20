@@ -17,6 +17,8 @@ namespace MobileRemoteActor.Coordinator.CSharp
 
             Receive<SendHashRequest>(msg =>
                 _hashers.Tell(new CreateHash(Guid.NewGuid().ToString())));
+
+            Receive<HashResult>(result => Context.System.Log.Info($"Hash: {result.Hash}, Salt: {result.Salt}"));
         }
 
         protected override void PreStart() =>
