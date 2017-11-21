@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace MobileCrawler.CSharp
 {
@@ -9,6 +10,8 @@ namespace MobileCrawler.CSharp
             InitializeComponent();
 
             BindingContext = new MainViewModel();
+
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
         }
     }
 }
