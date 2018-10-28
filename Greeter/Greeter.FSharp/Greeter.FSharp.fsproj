@@ -35,6 +35,13 @@
   <PropertyGroup Condition="'$(VisualStudioVersion)' == '10.0' OR '$(VisualStudioVersion)' == '11.0'">
     <FSharpTargetsPath>$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets</FSharpTargetsPath>
   </PropertyGroup>
+  <Import Project="$(FSharpTargetsPath)" />
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="Program.fs" />
+    <None Include="packages.config" />
+    <Content Include="app.config" />
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="Akka">
       <HintPath>..\..\packages\Akka.1.3.9\lib\net45\Akka.dll</HintPath>
@@ -75,10 +82,4 @@
       <HintPath>..\..\packages\FSPowerPack.Linq.Community.3.0.0.0\lib\Net40\FSharp.PowerPack.Linq.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="Program.fs" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(FSharpTargetsPath)" />
 </Project>
