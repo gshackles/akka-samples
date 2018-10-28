@@ -219,3 +219,5 @@ Resource.designer.cs
 Components/
 packages/
 testapps/
+
+.vs
