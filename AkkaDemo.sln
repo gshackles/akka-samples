@@ -27,9 +27,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoteActor.DeployTarget.CS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoteActor.Deployer.CSharp", "RemoteGreeter\RemoteActor.Deployer.CSharp\RemoteActor.Deployer.CSharp.csproj", "{F419E9C2-DD55-42F8-881E-84E68AA182AF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "C#", "C#", "{BB386139-6F20-4A8E-9204-777819B130CE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSharp", "CSharp", "{BB386139-6F20-4A8E-9204-777819B130CE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "F#", "F#", "{AD09482A-4A89-4B49-AED6-99C6C40C646D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FSharp", "FSharp", "{AD09482A-4A89-4B49-AED6-99C6C40C646D}"
 EndProject
 Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "RemoteActor.DeployTarget.FSharp", "RemoteGreeter\RemoteActor.DeployTarget.FSharp\RemoteActor.DeployTarget.FSharp.fsproj", "{A85D9212-9D81-47C3-B3B0-674DFA784DF1}"
 EndProject
@@ -43,7 +43,7 @@ Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "Supervision.FSharp", "Super
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. Mobile", "6. Mobile", "{018BA538-278E-4A8C-AA72-F187E22F0582}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "C#", "C#", "{9841304E-3353-46C2-A736-0426572B9A7A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSharp", "CSharp", "{9841304E-3353-46C2-A736-0426572B9A7A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileCrawler.CSharp.iOS", "Mobile\CSharp\iOS\MobileCrawler.CSharp.iOS.csproj", "{AED08480-67F0-44F2-A0F0-620ED363CFB7}"
 EndProject
