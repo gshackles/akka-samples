@@ -1,7 +1,6 @@
 ﻿using System.Linq;
-using System.Threading.Tasks;
 using Akka.Actor;
-using AngleSharp;
+using HtmlAgilityPack;
 
 namespace MobileCrawler.CSharp.Crawling
 {
@@ -15,17 +14,15 @@ namespace MobileCrawler.CSharp.Crawling
 
         private void OnReceiveScrape(Scrape msg)
         {
-            var config = Configuration.Default.WithDefaultLoader();
+            var document = new HtmlWeb().Load(msg.Url);
 
-            BrowsingContext.New(config).OpenAsync(msg.Url).ContinueWith(request =>
-            {
-                var document = request.Result;
-                var links = document.Links
-                                    .Select(link => link.GetAttribute("href"))
-                                    .ToList();
+            var title = document.DocumentNode.SelectSingleNode("//head/title").InnerText;
+            var links = document.DocumentNode.SelectNodes("//a")
+                                .Select(link => link.GetAttributeValue("href", ""))
+                                .Where(href => !string.IsNullOrWhiteSpace(href))
+                                .ToList();
 
-                return new ScrapeResult(document.Url, document.Title, links);
-            }, TaskContinuationOptions.ExecuteSynchronously).PipeTo(Self);
+            Self.Tell(new ScrapeResult(msg.Url, title, links));
         }
     }
 }

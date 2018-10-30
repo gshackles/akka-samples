@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Threading;
 using System.Windows.Input;
 using MobileCrawler.CSharp.Crawling;
 using Xamarin.Forms;
@@ -15,7 +16,7 @@ namespace MobileCrawler.CSharp
         private string _url;
         public string Url
         {
-            get { return _url; }
+            get => _url;
             set
             {
                 _url = value;
@@ -24,6 +25,7 @@ namespace MobileCrawler.CSharp
         }
 
         public MainViewModel() =>
-            StartCrawlingCommand = new Command(() => CrawlingSystem.StartCrawling(_url, this));
+            StartCrawlingCommand = new Command(() =>
+                ThreadPool.QueueUserWorkItem(_ => CrawlingSystem.StartCrawling(_url, this)));
     }
 }
