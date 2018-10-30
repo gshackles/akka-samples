@@ -37,7 +37,7 @@ namespace Counter.CSharp
 
     class MainClass
     {
-        private static async Task RunAsync()
+        public static async Task Main(string[] args)
         {
             using (var system = ActorSystem.Create("my-system"))
             {
@@ -55,11 +55,7 @@ namespace Counter.CSharp
 
                 Console.WriteLine($"The current count is {currentCount}");
             }
-        }
 
-        public static void Main(string[] args)
-        {
-            Task.Run(RunAsync).Wait();
             Console.ReadKey();
         }
     }
