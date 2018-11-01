@@ -18,13 +18,13 @@ namespace Greeter.CSharp
         public GreetingActor()
         {
             Receive<Greet>(msg =>
-               Console.WriteLine($"Hello, {msg.Who}"));
+                Console.WriteLine($"Hello, {msg.Who}"));
         }
     }
 
-    class MainClass
+    class Program
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
             using (var system = ActorSystem.Create("my-system"))
             {
