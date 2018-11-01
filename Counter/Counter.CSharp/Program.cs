@@ -19,7 +19,7 @@ namespace Counter.CSharp
         {
             Receive<Message>(msg =>
             {
-                switch (msg) 
+                switch (msg)
                 {
                     case Message.Increment:
                         _counter++;
