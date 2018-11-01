@@ -70,7 +70,7 @@ namespace Supervision.CSharp
             {
                 var supervisor = system.ActorOf<SupervisingActor>("supervisor");
 
-                while (true) 
+                while (true)
                 {
                     Thread.Sleep(500);
 
