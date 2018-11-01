@@ -8,7 +8,7 @@ namespace RemoteActor.Shared.CSharp
         public GreetingActor()
         {
             Receive<Greet>(msg =>
-               Console.WriteLine($"Hello, {msg.Who}"));
+                Console.WriteLine($"Hello, {msg.Who}"));
         }
     }
 }

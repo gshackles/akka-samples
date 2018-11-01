@@ -16,17 +16,17 @@ namespace RemoteActor.Deployer.CSharp
         {
             _remoteActor = remoteActor;
 
-            Receive<SendGreet>(msg => 
+            Receive<SendGreet>(msg =>
                 _remoteActor.Tell(new Greet("Greg")));
         }
 
         protected override void PreStart()
         {
             _sendTask = Context.System.Scheduler.ScheduleTellRepeatedlyCancelable(
-                TimeSpan.FromSeconds(1), 
-                TimeSpan.FromSeconds(1), 
-                Context.Self, 
-                new SendGreet(), 
+                TimeSpan.FromSeconds(1),
+                TimeSpan.FromSeconds(1),
+                Context.Self,
+                new SendGreet(),
                 ActorRefs.NoSender);
         }
 

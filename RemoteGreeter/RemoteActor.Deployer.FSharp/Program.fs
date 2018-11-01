@@ -1,7 +1,6 @@
 ﻿open System
 open Akka.FSharp
 open Akka.Actor
-open Akka.Remote
 open Akka.Configuration
 
 type Message = 
