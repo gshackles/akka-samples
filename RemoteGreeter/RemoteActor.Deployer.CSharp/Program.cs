@@ -36,7 +36,7 @@ namespace RemoteActor.Deployer.CSharp
         }
     }
 
-    class MainClass
+    public static class Program
     {
         public static void Main(string[] args)
         {
