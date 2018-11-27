@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Akka.Actor;
 using Akka.Configuration;
 
@@ -27,20 +28,18 @@ namespace Greeter.CSharp
     {
         public static void Main(string[] args)
         {
-
             var config = ConfigurationFactory.ParseString(@"
-                ﻿akka.actor {
+                akka.actor {
                     loglevel = DEBUG
-	                provider = ""Phobos.Actor.PhobosActorRefProvider, Phobos.Actor""
+                    provider = ""Phobos.Actor.PhobosActorRefProvider,Phobos.Actor""
                 }
 
                 phobos {
                     monitoring {
                         provider-type = statsd
-                        
                         statsd {
                             endpoint = 127.0.0.1
-                            port = 8129
+                            port = 8125
                         }
                     }
                 }");
