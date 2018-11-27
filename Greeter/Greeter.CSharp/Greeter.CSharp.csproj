@@ -11,10 +11,4 @@
     <PackageReference Include="Phobos.Monitoring.StatsD" Version="0.7.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="demo.conf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
