@@ -2,6 +2,8 @@
 using System.IO;
 using Akka.Actor;
 using Akka.Configuration;
+using OpenTracing.Util;
+using Phobos.Actor;
 
 namespace Greeter.CSharp
 {
@@ -17,10 +19,26 @@ namespace Greeter.CSharp
 
     public class GreetingActor : ReceiveActor
     {
+        private readonly IPhobosActorContext _instrumentation = Context.GetInstrumentation();
+
         public GreetingActor()
         {
             Receive<Greet>(msg =>
-                Console.WriteLine($"Hello, {msg.Who}"));
+            {
+                _instrumentation.Monitor.IncrementCounter("awesome-counter", 1);
+
+                _instrumentation.ActiveSpan.SetTag("who", msg.Who);
+
+                for (var i = 0; i < 5; i++)
+                {
+                    using (_instrumentation.Tracer.BuildSpan("nap-time").WithTag("iteration", i).StartActive())
+                        System.Threading.Thread.Sleep(100);
+
+                    System.Threading.Thread.Sleep(50);
+                }
+
+                Console.WriteLine($"Hello, {msg.Who}");
+            });
         }
     }
 
@@ -28,6 +46,8 @@ namespace Greeter.CSharp
     {
         public static void Main(string[] args)
         {
+            GlobalTracer.Register(Datadog.Trace.OpenTracing.OpenTracingTracerFactory.CreateTracer());
+
             var config = ConfigurationFactory.ParseString(@"
                 akka.actor {
                     loglevel = DEBUG
@@ -37,10 +57,15 @@ namespace Greeter.CSharp
                 phobos {
                     monitoring {
                         provider-type = statsd
+                        monitor-mailbox-depth = on
                         statsd {
                             endpoint = 127.0.0.1
                             port = 8125
                         }
+                    }
+
+                    tracing {
+		                provider-type = default
                     }
                 }");
 
